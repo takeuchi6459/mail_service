@@ -1,0 +1,11 @@
+version: "1.0"
+
+services:
+  postfix:
+    container_name: "postfix"
+    volumes:
+    - ./data:/home
+    - ./conf:/etc/postfix
+    build: .
+    ports:
+      - 25:25
