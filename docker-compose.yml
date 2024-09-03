@@ -4,7 +4,6 @@ services:
   postfix:
     container_name: "postfix"
     volumes:
-    - ./mail_data:/home
     - ./conf/postfix:/etc/postfix
     build: .
     ports:
@@ -14,6 +13,7 @@ services:
     container_name: "Dovecot"
     image: dovecot/dovecot:2.3.21.1
     volumes:
+    - ./mail_data:/home
     - ./conf/dovecot:/etc/dovecot
     ports:
       - 110:110
@@ -21,8 +21,12 @@ services:
       - 143:143
       - 993:993
       - 587:587
+      - 24:24
+
       
 
 # POP3 on 110, TLS 995
 # IMAP on 143, TLS 993
 # Submission on 587
+# LMTP on 24
+# ManageSieve on 4190
