@@ -1,13 +1,13 @@
 compatibility_level = 3.6
 
-mydomain = $MYDOMAIN
-myhostname = mail.\$mydomain
-myorigin = \$mydomain
+mydomain = example.com
+myhostname = mail.$mydomain
+myorigin = $mydomain
 
 inet_protocols = ipv4
 inet_interfaces = all
 
-mydestination = $MYDOMAIN
+mydestination = example.com
 local_recipient_maps =
 
 mynetworks = 127.0.0.0/8
@@ -16,7 +16,7 @@ alias_maps = hash:/etc/aliases
 #mailbox_transport = lmtp:inet:$LMTP_IPADDR:$LMTP_PORT
 mailbox_transport = lmtp:inet:Dovecot:24
 
-smtpd_banner = \$myhostname ESMTP
+smtpd_banner = $myhostname ESMTP
 biff = no
 
 readme_directory = no

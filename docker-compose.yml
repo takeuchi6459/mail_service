@@ -8,6 +8,8 @@ services:
     build: .
     ports:
       - 25:25
+    networks:
+      - LMTP
   
   dovecot:
     container_name: "Dovecot"
@@ -21,9 +23,12 @@ services:
       - 143:143
       - 993:993
       - 587:587
-      - 24:24
+    networks:
+      - LMTP
 
-      
+networks:
+  LMTP:
+    driver: bridge      
 
 # POP3 on 110, TLS 995
 # IMAP on 143, TLS 993
